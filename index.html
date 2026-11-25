@@ -1,0 +1,25 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>كارت</title>
+<style>@font-face{font-family:"CardArabic";src:url("fonts/NotoSansArabic-Light.woff") format("woff");font-weight:100 500}@font-face{font-family:"CardArabic";src:url("fonts/NotoSansArabic-Bold.woff") format("woff");font-weight:600 900}html,body{margin:0;background:var(--page)}:root{--page:#fdfcfb}body{box-sizing:border-box;padding:24px 24px;max-width:390px;margin:0 auto;font-family:"CardArabic",-apple-system,"Helvetica Neue",Arial,sans-serif;font-size:14px;font-weight:350;line-height:24px;letter-spacing:-0.01em;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+.nc{background:#151821;color:#fff;border-radius:20px;overflow:hidden;margin:-8px;padding-bottom:28px;text-align:center}
+.nc-photo{display:block;width:100%;height:auto}
+.nc-body{padding:0 20px;margin-top:14px}
+.nc h1{color:#FFC233;font-size:30px;margin:0 0 8px;font-weight:700}
+.nc h2{color:#FFC233;font-size:20px;margin:26px 0 4px}
+.nc-job{font-size:18px;margin:0 0 6px;line-height:1.6}
+.nc-co{font-size:15px;color:#c9ccd6;margin:0 0 16px;line-height:1.6}
+.nc-bar{width:120px;height:3px;background:#FFC233;margin:0 auto 20px;border-radius:2px}
+.nc-actions{display:flex;flex-direction:column;gap:10px;align-items:center;margin:12px 0}
+.nc-note{color:#c9ccd6;font-size:14px;margin:4px 0}
+.nc-qr{background:#fff;border-radius:16px;padding:12px;max-width:260px;margin:16px auto}
+.nc-qr img{width:100%;display:block}
+.nc-btn{display:flex;align-items:center;justify-content:center;width:100%;max-width:320px;box-sizing:border-box;height:48px;border-radius:24px;background:#FFC233;color:#151821;font-weight:700;font-size:16px;text-decoration:none}
+.nc-btn.sec{background:transparent;color:#fff;border:2px solid #FFC233}
+.nc-logo{width:88px;height:88px;object-fit:contain;border-radius:50%;background:#fff;margin:6px auto 10px;display:block}</style></head><body><div class="nc" id="c"></div>
+<script>
+fetch('card.json?'+Date.now()).then(r=>r.json()).then(c=>{
+const e=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const tel=c.phone.replace(/^0/,'+20');const wa='https://wa.me/2'+c.phone;
+document.title=c.name;
+document.getElementById('c').innerHTML=`<img class="nc-photo" src="${e(c.photo)}" alt="${e(c.name)}"><div class="nc-body"><h1>${e(c.name)}</h1><p class="nc-job">${e(c.job)}</p><img class="nc-logo" src="${e(c.logo)}" alt=""><p class="nc-co">${e(c.company)}</p><div class="nc-bar"></div><div class="nc-actions"><a class="nc-btn" href="tel:${e(tel)}">اتصل: ${e(c.phone)}</a><a class="nc-btn sec" href="${wa}">واتساب</a></div><h2>فودافون كاش</h2><p class="nc-note">رقم المحفظة: <bdi dir="ltr">${e(c.phone)}</bdi></p><div class="nc-actions"><a class="nc-btn" href="${e(c.payLink)}">حوّل فلوس عبر فودافون كاش</a></div><div class="nc-qr"><img src="${e(c.qr)}" alt=""></div><p class="nc-note">كود QR الخاص بتحويل فودافون كاش، أو استخدم زر التحويل.</p></div>`;
+});
+</script></body></html>

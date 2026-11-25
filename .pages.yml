@@ -1,0 +1,34 @@
+media:
+  input: media
+  output: media
+content:
+  - name: card
+    label: بطاقتي
+    type: file
+    path: card.json
+    format: json
+    fields:
+      - name: name
+        label: الاسم
+        type: string
+      - name: job
+        label: الوظيفة
+        type: string
+      - name: company
+        label: الشركة
+        type: string
+      - name: phone
+        label: رقم الموبايل / المحفظة
+        type: string
+      - name: payLink
+        label: رابط فودافون كاش
+        type: string
+      - name: photo
+        label: الصورة الشخصية
+        type: image
+      - name: logo
+        label: اللوجو
+        type: image
+      - name: qr
+        label: كود QR
+        type: image
